@@ -1,6 +1,9 @@
-(ns interpreter.core)
+(ns interpreter.core
+  (:require [interpreter.scanning.handlers :as handlers]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn -main [& args]
+  (if (> (count args) 1)
+    (System/exit 64)
+    (if (= (count args) 1)
+      (handlers/run-file (first args))
+      (handlers/run-prompt))))
