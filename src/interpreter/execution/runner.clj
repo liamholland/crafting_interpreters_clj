@@ -1,4 +1,8 @@
 (ns interpreter.execution.runner)
 
+(defn -execute [lines]
+  (doseq [line lines]
+    (println line)))
+
 (defn run [source]
-  (println (str "this does nothing: " source)))
+  (-execute source))
