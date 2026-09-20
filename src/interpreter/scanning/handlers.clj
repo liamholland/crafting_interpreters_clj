@@ -1,7 +1,10 @@
-(ns interpreter.scanning.handlers)
+(ns interpreter.scanning.handlers
+  (:require [interpreter.execution.runner :as runner]
+            [interpreter.input.files :as files]
+            [interpreter.input.repl :as repl]))
 
 (defn run-prompt []
-  (println "Running in interactive mode..."))
+  (runner/run (repl/one-line)))
 
 (defn run-file [file]
-  (println "Running the file" file))
+  (runner/run (files/read-all file)))
